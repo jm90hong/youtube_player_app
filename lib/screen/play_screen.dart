@@ -4,7 +4,11 @@ import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
 
 class PlayScreen extends StatefulWidget {
-  const PlayScreen({Key? key}) : super(key: key);
+  String url;
+
+  PlayScreen({
+    required this.url
+  });
 
   @override
   State<PlayScreen> createState() => _PlayScreenState();

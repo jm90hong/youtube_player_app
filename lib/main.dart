@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:youtube_player_app/screen/play_screen.dart';
+import 'package:youtube_player_app/screen/search_screen.dart';
 
 //https://pub.dev/packages/youtube_player_flutter
 void main() async{
@@ -16,12 +17,12 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Youtube player controller',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.red),
         useMaterial3: true,
       ),
-      home: const PlayScreen(),
+      home: const SearchScreen(),
     );
   }
 }
