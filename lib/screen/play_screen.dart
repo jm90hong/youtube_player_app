@@ -16,13 +16,7 @@ class PlayScreen extends StatefulWidget {
 
 class _PlayScreenState extends State<PlayScreen> {
 
-  YoutubePlayerController _controller = YoutubePlayerController(
-    initialVideoId: 'iLnmTe5Q2Qw',
-    flags: YoutubePlayerFlags(
-      autoPlay: true,
-      mute: true,
-    ),
-  );
+  late YoutubePlayerController _controller;
 
 
   void init() async{
@@ -30,6 +24,18 @@ class _PlayScreenState extends State<PlayScreen> {
       DeviceOrientation.landscapeLeft,
       DeviceOrientation.landscapeRight,
     ]);
+
+    _controller=YoutubePlayerController(
+      initialVideoId: YoutubePlayer.convertUrlToId(widget.url) ?? '',
+      flags: const YoutubePlayerFlags(
+        autoPlay: true,
+        mute: true,
+      ),
+    );
+
+    setState(() {
+
+    });
   }
 
   @override
@@ -44,22 +50,47 @@ class _PlayScreenState extends State<PlayScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
 
-      body: YoutubePlayer(
-          width: double.infinity,
-          controller: _controller,
-          showVideoProgressIndicator: true,
-          progressIndicatorColor:  Colors.amber,
-          progressColors: ProgressBarColors(
-            playedColor: Colors.amber,
-            handleColor: Colors.amberAccent,
+      body: Stack(
+        children: [
+          YoutubePlayer(
+              width: double.infinity,
+              controller: _controller,
+              showVideoProgressIndicator: true,
+              progressIndicatorColor:  Colors.amber,
+              progressColors: ProgressBarColors(
+                playedColor: Colors.amber,
+                handleColor: Colors.amberAccent,
+              ),
+              onReady: (){
+                _controller.addListener((){});
+                _controller.setSize(Size(
+                    MediaQuery.of(context).size.width,
+                    MediaQuery.of(context).size.height
+                ));
+              },
           ),
-          onReady: (){
-            _controller.addListener((){});
-            _controller.setSize(Size(
-                MediaQuery.of(context).size.width,
-                MediaQuery.of(context).size.height
-            ));
-          },
+
+
+          //todo controller pad
+          Positioned(
+            left: 0,
+            bottom: 45,
+            child: Container(
+              width: 100,
+              height: 100,
+              color: Colors.red,
+            ),
+          ),
+          Positioned(
+            right: 0,
+            bottom: 45,
+            child: Container(
+              width: 100,
+              height: 100,
+              color: Colors.blue,
+            ),
+          )
+        ],
       ),
     );
   }
