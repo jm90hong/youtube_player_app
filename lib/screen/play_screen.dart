@@ -75,6 +75,8 @@ class _PlayScreenState extends State<PlayScreen> {
               ),
               onReady: (){
                 _controller.pause();
+                _controller.setVolume(100);
+                _controller.unMute();
                 _controller.addListener((){});
                 _controller.setSize(Size(
                     MediaQuery.of(context).size.width,
