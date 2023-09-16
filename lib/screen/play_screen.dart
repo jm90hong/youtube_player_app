@@ -98,6 +98,15 @@ class _PlayScreenState extends State<PlayScreen> {
                 leftPad=false;
                 determinePlay();
               },
+              onVerticalDragEnd: (detail){
+                leftPad=false;
+                determinePlay();
+              },
+              onHorizontalDragEnd: (detail){
+                leftPad=false;
+                determinePlay();
+              },
+
               child: Container(
                 width: (MediaQuery.of(context).size.width*0.5)-50,
                 height: (MediaQuery.of(context).size.height*1)-50,
@@ -114,6 +123,14 @@ class _PlayScreenState extends State<PlayScreen> {
                 determinePlay();
               },
               onTapUp: (detail){
+                rightPad=false;
+                determinePlay();
+              },
+              onVerticalDragEnd: (detail){
+                rightPad=false;
+                determinePlay();
+              },
+              onHorizontalDragEnd: (detail){
                 rightPad=false;
                 determinePlay();
               },

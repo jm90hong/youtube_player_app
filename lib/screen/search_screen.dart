@@ -35,7 +35,14 @@ class _SearchScreenState extends State<SearchScreen> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.red,
-        title: Text('YouTube 영상 검색',style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold),),
+        title: Text(
+          'YouTube 영상 검색',
+          style: TextStyle(
+              color: Colors.white,
+              fontWeight: FontWeight.bold,
+              fontFamily: 'notobold'
+          ),
+        ),
       ),
       body: Container(
         width: double.infinity,
